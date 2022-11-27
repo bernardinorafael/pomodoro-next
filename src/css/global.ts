@@ -8,8 +8,9 @@ export const GlobalStyle = createGlobalStyle`
 	}
 
 	body {
-		background: ${({ theme }) => theme.COLORS.mauve[900]};
-		color: ${({ theme }) => theme.COLORS.mauve[100]};
+		background: ${({ theme }) => theme.COLORS.olive[900]};
+		color: ${({ theme }) => theme.COLORS.olive[100]};
+		-webkit-font-smoothing: antialiased;
 	}
 
 	body,
@@ -17,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
 	select
 	button,
 	textarea {
-		font-family: "Inter Tight", sans-serif;
+		font-family: ${({ theme }) => theme.FONT_FAMILY.default};
 		font-size: ${({ theme }) => theme.FONT_SIZE.sm};
 		font-weight: ${({ theme }) => theme.FONT_WEIGHT.regular};
 	}
@@ -30,10 +31,11 @@ export const GlobalStyle = createGlobalStyle`
 
 	::-webkit-scrollbar {
 		width: .8rem;
-		background: ${({ theme }) => theme.COLORS.mauve[700]};
+		background: ${({ theme }) => theme.COLORS.olive[700]};
 	}
+	
 	::-webkit-scrollbar-thumb {
-		background: ${(props) => props.theme.COLORS.mauve[600]};
+		background: ${(props) => props.theme.COLORS.olive[600]};
 	}
 	
 	@media (max-width: 992px) {
