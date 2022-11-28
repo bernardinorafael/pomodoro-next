@@ -1,6 +1,6 @@
+import { differenceInSeconds } from "date-fns"
 import { createContext, useContext, useEffect, useState } from "react"
 import { v4 as uuid } from "uuid"
-import { differenceInSeconds } from "date-fns"
 import { Cycle } from "../@types/cycles"
 
 interface CyclesContextProps {
@@ -16,6 +16,7 @@ export const CyclesContext = createContext<CyclesContextProps | null>(null)
 
 export function CyclesProvider({ children }: { children: React.ReactNode }) {
   const [cycles, setCycles] = useState<Cycle[]>([])
+
   const [currentCycleId, setCurrentCycleId] = useState<string | null>(null)
   const [amountSecondsPassed, setAmountSecondsPassed] = useState<number>(0)
 
@@ -23,6 +24,12 @@ export function CyclesProvider({ children }: { children: React.ReactNode }) {
 
   const totalSeconds = currentCycle ? currentCycle.duration * 60 : null
   const currentSeconds = currentCycle ? totalSeconds - amountSecondsPassed : null
+
+  useEffect(() => {
+    const cyclesJSON = JSON.stringify(cycles)
+
+    localStorage.setItem("@BERNARDINO:POMODORO", cyclesJSON)
+  }, [cycles])
 
   function interruptCycle() {
     setCycles((state) =>
@@ -37,8 +44,6 @@ export function CyclesProvider({ children }: { children: React.ReactNode }) {
 
     setCurrentCycleId(null)
   }
-
-  console.log(cycles)
 
   function createNewCycle(task: string, duration: number) {
     const id = uuid()
@@ -57,7 +62,7 @@ export function CyclesProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     let interval: NodeJS.Timer
-		
+
     if (currentCycle) {
       interval = setInterval(() => {
         const secondsDifference = differenceInSeconds(new Date(), currentCycle.createdAt)

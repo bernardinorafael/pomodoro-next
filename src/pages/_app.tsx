@@ -11,12 +11,12 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
 
-      <CyclesProvider>
-        <AppContainer>
-          <Header />
+      <AppContainer>
+        <Header />
+        <CyclesProvider>
           <Component {...pageProps} />
-        </AppContainer>
-      </CyclesProvider>
+        </CyclesProvider>
+      </AppContainer>
     </ThemeProvider>
   )
 }

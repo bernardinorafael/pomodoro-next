@@ -37,16 +37,22 @@ export const GlobalStyle = createGlobalStyle`
 	::-webkit-scrollbar-thumb {
 		background: ${(props) => props.theme.COLORS.olive[600]};
 	}
-	
+
+	@media (max-width: 768px) {
+		html {
+			font-size: 87.5%;
+		}
+	}
+
 	@media (max-width: 992px) {
 		html {
 			font-size: 93.75%;
 		}
 	}
-	
-	@media (max-width: 768px) {
-		html {
-			font-size: 87.5%;
+		
+	@media (max-width: 1020px) {
+		body {
+			background: ${({ theme }) => theme.COLORS.olive[800]};
 		}
 	}
 `

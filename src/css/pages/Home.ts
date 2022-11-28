@@ -94,6 +94,18 @@ export const Container = styled.div`
         }
       }
     }
+
+    @media (max-width: 650px) {
+      label {
+        display: none;
+      }
+    }
+
+    @media (max-width: 470px) {
+      span {
+        display: none;
+      }
+    }
   }
 `
 
@@ -111,6 +123,18 @@ export const Countdown = styled.section`
     background: ${({ theme }) => theme.COLORS.olive[600]};
     padding: 1rem 1.5rem;
   }
+
+  @media (max-width: 650px) {
+    span {
+      padding: 0.5rem;
+    }
+  }
+
+  @media (max-width: 470px) {
+    span {
+      padding: 0.225rem;
+    }
+  }
 `
 
 export const Separator = styled.div`
@@ -119,6 +143,14 @@ export const Separator = styled.div`
   overflow: hidden;
   padding: 0.5rem 1rem;
   width: 4rem;
+
+  @media (max-width: 650px) {
+    width: 1rem;
+  }
+
+  @media (max-width: 470px) {
+    display: none;
+  }
 `
 
 const Button = styled.button`

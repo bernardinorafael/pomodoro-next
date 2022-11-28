@@ -1,9 +1,10 @@
-import Head from "next/head"
 import { zodResolver } from "@hookform/resolvers/zod"
+import Head from "next/head"
 import * as Icon from "phosphor-react"
 import { useState } from "react"
-import { z } from "zod"
 import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { useCycles } from "../contexts/CyclesContext"
 import {
   ButtonInterruptCountdown,
   ButtonStartCountdown,
@@ -11,7 +12,6 @@ import {
   Countdown,
   Separator,
 } from "../css/pages/Home"
-import { useCycles } from "../contexts/CyclesContext"
 
 const newCycleSchema = z.object({
   task: z.string().min(1, "Informe uma tarefa."),
